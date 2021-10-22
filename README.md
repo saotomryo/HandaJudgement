@@ -9,7 +9,7 @@ Judgement for solder
 
 3.Pythonの実行環境上のコマンドプロンプトまたはターミナルで、「streamlit run app.py」と入力してエンターします。
 
-4.Webサービスが開始され、デフォルトで「http://localhost:8501」でアプリケーションにアクセス出来ます。
+4.Webサービスが開始され、デフォルトで「http://localhost:8501　」でアプリケーションにアクセス出来ます。
 
 
 
