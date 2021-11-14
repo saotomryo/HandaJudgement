@@ -13,8 +13,8 @@ from PIL import Image
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 transform = transforms.Compose([ # 検証データ用の画像の前処理
-    transforms.RandomResizedCrop(size=(224,224),scale=(1.0,1.0),ratio=(1.0,1.0)), # アスペクト比を保って画像をリサイズ
-    #transforms.Resize((224,224)),
+    #transforms.RandomResizedCrop(size=(224,224),scale=(1.0,1.0),ratio=(1.0,1.0)), # アスペクト比を保って画像をリサイズ
+    transforms.Resize((224,224)),
     transforms.ToTensor(),
     transforms.Normalize((0.485, 0.456, 0.406), (0.229, 0.224, 0.225)),
 ])
@@ -41,16 +41,6 @@ st.title('はんだ判定アプリ')
 
 class_num = 4
 
-
-
-#upload_model = st.file_uploader('AIモデルをアップロードしてください',type=['pth'])
-
-#if upload_model is not None:
-#    net.load_state_dict(torch.load(upload_model,map_location=torch.device('cpu')))
-#else:
-#    model_path = './model/model0.pth'
-#    net.load_state_dict(torch.load(model_path,map_location=torch.device('cpu')))
-
 uploaded_file = st.file_uploader('検査する写真をアップロードが撮影してください。', type=['jpg','png','jpeg'])
 if uploaded_file is not None:
     net = None
@@ -68,7 +58,7 @@ if uploaded_file is not None:
     with torch.no_grad():
         out = net(data)
         predict = out.argmax(dim=1)
-        st.write(out)
+        #st.write(out)
 
     syubetsu = ["ブリッジ","角","芋"]
 
